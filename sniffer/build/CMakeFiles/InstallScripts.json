@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/deacon/Documents/Projects/NetworkPacketSniffer/sniffer/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

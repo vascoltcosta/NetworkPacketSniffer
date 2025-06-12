@@ -1,0 +1,3 @@
+/home/deacon/Documents/Projects/NetworkPacketSniffer/sniffer/build/CMakeFiles/sniffer.dir
+/home/deacon/Documents/Projects/NetworkPacketSniffer/sniffer/build/CMakeFiles/edit_cache.dir
+/home/deacon/Documents/Projects/NetworkPacketSniffer/sniffer/build/CMakeFiles/rebuild_cache.dir

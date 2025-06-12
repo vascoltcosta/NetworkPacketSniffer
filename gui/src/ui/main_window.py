@@ -1,3 +1,8 @@
+import sys
+import os
+sys.path.append(os.path.expanduser('~/Documents/Projects/NetworkPacketSniffer/sniffer/build'))
+import sniffer
+
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel, QHBoxLayout, QVBoxLayout, QWidget
 
 class MainWindow(QMainWindow):
@@ -32,8 +37,9 @@ class MainWindow(QMainWindow):
 
 
     def on_startsniffbutton_click(self):
-        self.label.setText("Start Sniffing Clicked!")
+        result = sniffer.start_sniffing()
+        self.label.setText(result)
 
-        
     def on_stopsniffbutton_click(self):
-        self.label.setText("Stop Sniffing Clicked!")
+        result = sniffer.stop_sniffing()
+        self.label.setText(result)
