@@ -1,1 +1,1 @@
-/usr/bin/c++ -fPIC -flto -Wl,--dependency-file=CMakeFiles/sniffer.dir/link.d -shared  -o sniffer.cpython-313-x86_64-linux-gnu.so CMakeFiles/sniffer.dir/sniffer.cpp.o
+/usr/bin/c++ -fPIC -flto -Wl,--dependency-file=CMakeFiles/sniffer.dir/link.d -shared  -o sniffer.cpython-313-x86_64-linux-gnu.so CMakeFiles/sniffer.dir/sniffer.cpp.o  -lpcap -lpcap

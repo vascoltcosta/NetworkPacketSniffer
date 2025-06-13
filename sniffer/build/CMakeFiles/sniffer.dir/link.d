@@ -2,6 +2,8 @@ sniffer.cpython-313-x86_64-linux-gnu.so: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o \
   CMakeFiles/sniffer.dir/sniffer.cpp.o \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libpcap.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libpcap.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
@@ -32,6 +34,10 @@ sniffer.cpython-313-x86_64-linux-gnu.so: \
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o:
 
 CMakeFiles/sniffer.dir/sniffer.cpp.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libpcap.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libpcap.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.so:
 

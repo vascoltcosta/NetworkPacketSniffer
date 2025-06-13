@@ -42,7 +42,7 @@ class MainWindow(QMainWindow):
         hlayout.addWidget(self.sniffbutton)
 
         container = QWidget()
-        vlayout.addLayout(hlayout)
+        vlayout.addLayoutz(hlayout)
         container.setLayout(vlayout)
         self.setCentralWidget(container)
 

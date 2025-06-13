@@ -360,4 +360,15 @@ CMakeFiles/sniffer.dir/sniffer.cpp.o: \
  /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
  /usr/include/asm-generic/socket.h /usr/include/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
- /usr/include/bits/types/struct_osockaddr.h /usr/include/net/if.h
+ /usr/include/bits/types/struct_osockaddr.h /usr/include/net/if.h \
+ /usr/include/pcap.h /usr/include/pcap/pcap.h \
+ /usr/include/pcap/funcattrs.h /usr/include/pcap/compiler-tests.h \
+ /usr/include/pcap/pcap-inttypes.h /usr/include/sys/time.h \
+ /usr/include/pcap/socket.h /usr/include/netdb.h \
+ /usr/include/netinet/in.h /usr/include/bits/in.h \
+ /usr/include/rpc/netdb.h /usr/include/bits/types/sigevent_t.h \
+ /usr/include/bits/types/__sigval_t.h /usr/include/bits/netdb.h \
+ /usr/include/arpa/inet.h /usr/include/pcap/bpf.h /usr/include/pcap/dlt.h \
+ /usr/include/netinet/ip.h /usr/include/netinet/if_ether.h \
+ /usr/include/linux/if_ether.h /usr/include/net/ethernet.h \
+ /usr/include/net/if_arp.h

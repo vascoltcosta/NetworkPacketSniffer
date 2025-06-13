@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -Dsniffer_EXPORTS
 
-CXX_INCLUDES = -isystem /usr/include/python3.13
+CXX_INCLUDES = -I/usr/include/libnl3 -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -isystem /usr/include/python3.13
 
 CXX_FLAGS = -std=gnu++14 -fPIC -fvisibility=hidden -flto -fno-fat-lto-objects
 
