@@ -3,14 +3,17 @@ import os
 sys.path.append(os.path.expanduser('~/Documents/Projects/NetworkPacketSniffer/sniffer/build'))
 import sniffer
 
-from PyQt5.QtWidgets import QMainWindow,QComboBox, QPushButton, QLabel, QHBoxLayout, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QTableWidgetItem,QHeaderView, QTableWidget ,QMainWindow,QComboBox, QPushButton, QLabel, QHBoxLayout, QVBoxLayout, QWidget
 
 class MainWindow(QMainWindow):
     def __init__(self):
+        
         super().__init__()
 
         self.setWindowTitle("Network Packet Sniffer")
         self.setGeometry(200, 200, 1000, 800)
+
+        self.startsniffingcounter = False
 
         self.initUI()
 
@@ -19,24 +22,28 @@ class MainWindow(QMainWindow):
         hlayout = QHBoxLayout()
         vlayout.addLayout(hlayout)
 
-        self.label = QLabel("Welcome to the Network Packet Sniffer", self)
-        vlayout.addWidget(self.label)
+        #Horizontal Header
+        self.packet_table = QTableWidget(self)
+        self.packet_table.setColumnCount(6)
+        self.packet_table.setHorizontalHeaderLabels(["Time", "Source", "Destination", "Protocol", "Length", "Payload"])
+        self.packet_table.horizontalHeader()
+        for c in range(self.packet_table.columnCount()):
+            self.packet_table.horizontalHeader().resizeSection(c, 150)  # Defines the starting width of each column
+        self.packet_table.horizontalHeader().setStretchLastSection(True)
+        vlayout.addWidget(self.packet_table)
 
+        # Combo box with all the Network Interfaces
         self.interface_combo = QComboBox(self)
         self.get_interfaces()
         hlayout.addWidget(self.interface_combo)
 
-        self.stopsniffbutton = QPushButton("Stop Sniffing", self)
-        self.stopsniffbutton.clicked.connect(self.on_stopsniffbutton_click)
-        hlayout.addWidget(self.stopsniffbutton)
-
-        self.startsniffbutton = QPushButton("Start Sniffing", self)
-        self.startsniffbutton.clicked.connect(self.on_startsniffbutton_click)
-        hlayout.addWidget(self.startsniffbutton)
+        self.sniffbutton = QPushButton("Start Sniffing", self)
+        self.sniffbutton.clicked.connect(self.on_sniffbutton_click)
+        hlayout.addWidget(self.sniffbutton)
 
         container = QWidget()
+        vlayout.addLayout(hlayout)
         container.setLayout(vlayout)
-        container.setLayout(hlayout)
         self.setCentralWidget(container)
 
 
@@ -49,10 +56,21 @@ class MainWindow(QMainWindow):
         else:
             self.label.setText("No network interfaces found.")
 
-    def on_startsniffbutton_click(self):
-        result = sniffer.start_sniffing()
-        self.label.setText(result)
+    def on_sniffbutton_click(self):
+        self.startsniffingcounter = not self.startsniffingcounter
+        if self.startsniffingcounter:
+            self.sniffbutton.setText("Stop Sniffing")
+            self.sniffbutton.setStyleSheet("background-color: green")
+            pkt = sniffer.start_sniffing()
+            row = self.packet_table.rowCount()
+            self.packet_table.insertRow(row)
+            self.packet_table.setItem(row, 0, QTableWidgetItem(str(pkt.get("Time", ""))))
+            self.packet_table.setItem(row, 1, QTableWidgetItem(str(pkt.get("Source", ""))))
+            self.packet_table.setItem(row, 2, QTableWidgetItem(str(pkt.get("Destination", ""))))
+            self.packet_table.setItem(row, 3, QTableWidgetItem(str(pkt.get("Protocol", ""))))
+            self.packet_table.setItem(row, 4, QTableWidgetItem(str(pkt.get("Length", ""))))
+            self.packet_table.setItem(row, 5, QTableWidgetItem(str(pkt.get("Payload", ""))))
 
-    def on_stopsniffbutton_click(self):
-        result = sniffer.stop_sniffing()
-        self.label.setText(result)
+        else:
+            self.sniffbutton.setText("Start Sniffing")
+            self.sniffbutton.setStyleSheet("background-color: red")
