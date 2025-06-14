@@ -38,11 +38,11 @@ class MainWindow(QMainWindow):
         hlayout.addWidget(self.interface_combo)
 
         self.sniffbutton = QPushButton("Start Sniffing", self)
+        self.sniffbutton.setStyleSheet("background-color: red")
         self.sniffbutton.clicked.connect(self.on_sniffbutton_click)
         hlayout.addWidget(self.sniffbutton)
 
         container = QWidget()
-        vlayout.addLayoutz(hlayout)
         container.setLayout(vlayout)
         self.setCentralWidget(container)
 
@@ -61,7 +61,8 @@ class MainWindow(QMainWindow):
         if self.startsniffingcounter:
             self.sniffbutton.setText("Stop Sniffing")
             self.sniffbutton.setStyleSheet("background-color: green")
-            pkt = sniffer.start_sniffing()
+            
+            pkt = sniffer.capture_packet(self.interface_combo.currentText())
             row = self.packet_table.rowCount()
             self.packet_table.insertRow(row)
             self.packet_table.setItem(row, 0, QTableWidgetItem(str(pkt.get("Time", ""))))

@@ -97,18 +97,7 @@ py::dict capture_packet(const std::string& interface) {
     return pkt;
 }
 
-py::dict start_sniffing() {
-    return capture_packet("wlan0");
-}
-
-
-std::string stop_sniffing() {
-    // Aqui você pode parar o sniffing
-    return "Sniffing stopped!";
-}
-
 PYBIND11_MODULE(sniffer, m) {
-    m.def("start_sniffing", &start_sniffing, "Inicia o sniffing");
-    m.def("stop_sniffing", &stop_sniffing, "Para o sniffing");
+    m.def("capture_packet", &capture_packet, "Capture a packet from a specified interface");
     m.def("get_interfaces", &get_interfaces, "All active network interfaces");
 }
